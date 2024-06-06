@@ -70,9 +70,9 @@ class Voter:
         for i in range(6):
             match i:
                 case 0:
-                    self.get_first()
+                    self.get_string(self.set_first, "Please Enter Your First Name")
                 case 1:
-                    self.get_last()
+                    self.get_string(self.set_last, "Please Enter Your Last Name")
                 case 2:
                     if self.get_age() is False:
                         return 2
@@ -89,30 +89,56 @@ class Voter:
                     return 1
         return 0
 
-    def get_first(self):
+    def get_string(self, set_string_function, question : str):
         """
-        Prompt the user to provide their first name.
+        Prompt the user to provide a string value
 
         Returns:
             None
         """
 
-        while is_null_or_whitespace(self.first_name) is True:
-            self.first_name = get_string_entry("Please provide first name").strip()
-            if is_null_or_whitespace(self.first_name):
-                print("Invalid Name.  Please Provide a name")
+        while set_string_function(get_string_entry(question).strip()) is False:
+            continue
 
-    def get_last(self):
+    def set_first(self, new_name) -> bool:
         """
-        Prompt the user to provide their last name.
+        Sets the first name attribute of the instance 
+        to the provided new name.
+
+        Args:
+            new_name (str): The new first name value to be set.
 
         Returns:
-            None
+            bool: True if the new name is not null or 
+            whitespace and successfully set, False otherwise.
         """
-        while is_null_or_whitespace(self.last_name) is True:
-            self.last_name = get_string_entry("Please provide last name").strip()
-            if is_null_or_whitespace(self.last_name):
-                print("Invalid Name.  Please Provide a name")
+
+        if is_null_or_whitespace(new_name):
+            print("Invalid Name.  Please Provide a valid name")
+            return False
+
+        self.first_name = new_name
+        return True
+
+    def set_last(self, new_name):
+        """
+        Sets the last name attribute of the instance 
+        to the provided new name.
+
+        Args:
+            new_name (str): The new last name value to be set.
+
+        Returns:
+            bool: True if the new name is not null or 
+            whitespace and successfully set, False otherwise.
+        """
+
+        if is_null_or_whitespace(new_name):
+            print("Invalid Name.  Please Provide a valid name")
+            return False
+
+        self.last_name = new_name
+        return True
 
     def get_age(self) -> bool:
         """
@@ -122,16 +148,30 @@ class Voter:
             bool: True if the user's age is valid and 
             eligible for voter registration, False otherwise.
         """
-        while self.age is None:
-            self.age = get_int_entry("Please provide age")
+        while self.set_age(get_int_entry("Please provide age")) is False:
+            continue
 
-        if self.age < 18:
+    def set_age(self, new_value : int) -> bool:
+        """
+        Sets the age attribute of the instance to the provided new value.
+
+        Args:
+            new_value (int): The new age value to be set.
+
+        Returns:
+            bool: True if the new age value is within the valid range
+              and successfully set, False otherwise.
+        """
+
+        if new_value < 18:
             print(f"You are not yet elegible to register as a voter." \
-                    f"Try again in {18-self.age} years.")
+                    f"Try again in {18-new_value} years.")
             return False
-        if self.age > 120:
+        if new_value > 120:
             print("You are dead.  Sorry you can no longer vote.")
             return False
+
+        self.age = new_value
         return True
 
     def get_us(self):
@@ -144,6 +184,23 @@ class Voter:
         while self.us_citizen is None:
             self.us_citizen = get_yes_no("Are you a U.S. Citizen?")
 
+    def set_us(self, is_us : bool) -> bool:
+        """
+        Sets the US citizen attribute of the instance.
+
+        Args:
+            is_us (bool): True if the individual is a US citizen, False otherwise.
+
+        Returns:
+            bool: True if the US citizen attribute is successfully set, False if the input is None.
+        """
+
+        if is_us is None or is_us is False:
+            return False
+
+        self.us_citizen = is_us
+        return True
+
     def get_state(self):
         """
         Prompt the user to enter their state as a 2-letter abbreviation and validate it.
@@ -152,12 +209,28 @@ class Voter:
             None
         """
 
-        while True:
-            self.state = get_string_entry(\
-                "Please Enter Your State as 2 letter abbreviation").upper()
-            if len(self.state) == 2 and self.state in us_state_codes:
-                break
-            print("State is not a valid US state")
+        while self.set_state(get_string_entry(\
+        "Please Enter Your State as 2 letter abbreviation").upper()) is False:
+            continue
+
+    def set_state(self, new_state : str) -> bool:
+        """
+        Sets the state attribute of the instance.
+
+        Args:
+            new_state (str): The new state value to be set (2-letter abbreviation).
+
+        Returns:
+            bool: True if the new state value is a valid 
+            US state abbreviation and successfully set, False otherwise.
+        """
+
+        if len(new_state) == 2 and new_state in us_state_codes:
+            self.state = new_state
+            return True
+
+        print("State is not a valid US state")
+        return False
 
     def get_zip(self):
         """
@@ -167,10 +240,26 @@ class Voter:
             None
         """
 
-        while True:
-            self.zip_code = get_string_entry("Please Enter Your Zip Code")
-            if len(self.zip_code) == 5:
-                break
+        while self.set_zip(get_string_entry("Please Enter Your Zip Code")) is False:
+            continue
+
+    def set_zip(self, new_value : str) -> bool:
+        """
+        Sets the ZIP code attribute of the instance.
+
+        Args:
+            new_value (str): The new ZIP code value to be set.
+
+        Returns:
+            bool: True if the new ZIP code value is valid and successfully set, False otherwise.
+        """
+
+        if len(new_value) == 5 and new_value.isdigit():
+            self.zip_code = new_value
+            return True
+
+        print("Invalid Zip Code")
+        return False
 
 def get_string_entry(question : str) -> str:
     """
