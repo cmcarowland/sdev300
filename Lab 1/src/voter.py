@@ -1,6 +1,6 @@
 """This script prompts allows a user to register to vote in the United States"""
 #!/usr/bin/env python
-from state_codes import us_state_codes
+from state_codes import us_state_codes, us_state_names
 
 class Voter:
     """
@@ -37,7 +37,7 @@ class Voter:
         out_string = f"Name (first, last) : {self.first_name} {self.last_name}\n"
         out_string += f"Age : {self.age}\n"
         out_string += f"U.S. Citizen : {self.us_citizen}\n"
-        out_string += f"State : {self.state}\n"
+        out_string += f"State : {us_state_names[self.state]}\n"
         out_string += f"Zipcode : {self.zip_code}\n"
         return out_string
 
@@ -78,6 +78,8 @@ class Voter:
                         return 2
                 case 3:
                     self.get_us()
+                    if self.us_citizen is False:
+                        return 2
                 case 4:
                     self.get_state()
                 case 5:
@@ -94,7 +96,7 @@ class Voter:
         Returns:
             None
         """
-                
+
         while is_null_or_whitespace(self.first_name) is True:
             self.first_name = get_string_entry("Please provide first name").strip()
             if is_null_or_whitespace(self.first_name):
@@ -120,8 +122,9 @@ class Voter:
             bool: True if the user's age is valid and 
             eligible for voter registration, False otherwise.
         """
+        while self.age is None:
+            self.age = get_int_entry("Please provide age")
 
-        self.age = get_int_entry("Please provide age")
         if self.age < 18:
             print(f"You are not yet elegible to register as a voter." \
                     f"Try again in {18-self.age} years.")
@@ -138,8 +141,8 @@ class Voter:
         Returns:
             None
         """
-
-        self.us_citizen = get_yes_no("Are you a U.S. Citizen?")
+        while self.us_citizen is None:
+            self.us_citizen = get_yes_no("Are you a U.S. Citizen?")
 
     def get_state(self):
         """
@@ -150,8 +153,9 @@ class Voter:
         """
 
         while True:
-            self.state = get_string_entry("Please Enter Your State as 2 letter abbreviation")
-            if len(self.state) == 2 and self.state.upper() in us_state_codes:
+            self.state = get_string_entry(\
+                "Please Enter Your State as 2 letter abbreviation").upper()
+            if len(self.state) == 2 and self.state in us_state_codes:
                 break
             print("State is not a valid US state")
 
@@ -197,12 +201,12 @@ def get_int_entry(question : str) -> int:
     """
 
     print(question)
-    while True:
-        try:
-            selection = int(input("Enter Value >> "))
-            return selection
-        except ValueError:
-            print("Invalid entry.  Please specify a number.")
+    try:
+        selection = int(input("Enter Value >> "))
+        return selection
+    except ValueError:
+        print("Invalid entry.  Please specify a number.")
+        return None
 
 def is_null_or_whitespace(value : str) -> bool:
     """
@@ -233,14 +237,15 @@ def get_yes_no(question : str) -> bool:
     """
 
     print(question)
-    valid_options = ['yes', 'y', 'no', 'n']
-    while True:
-        user_selection = input("Enter Selection >> ").lower()
-        if user_selection in valid_options[:2]:
-            return True
-        if user_selection in valid_options[2:]:
-            return False
-        print("Invalid Selection")
+    valid_options = ['yes', 'y', 'n', 'no']
+    user_selection = input("Enter Selection >> ").lower()
+    if user_selection in valid_options[:2]:
+        return True
+    if user_selection in valid_options[2:]:
+        return False
+
+    print("Invalid Selection")
+    return None
 
 def edit_voter(new_voter : Voter) -> bool:
     """
@@ -254,6 +259,7 @@ def edit_voter(new_voter : Voter) -> bool:
     """
 
     while True:
+        user_selection = None
         print("Current Information")
         print(new_voter)
         print("1) Edit First Name")
@@ -262,7 +268,9 @@ def edit_voter(new_voter : Voter) -> bool:
         print("4) Edit State")
         print("5) Edit Zip Code")
         print("0) Complete")
-        user_selection = get_int_entry("")
+        while user_selection is None:
+            user_selection = get_int_entry("")
+
         match user_selection:
             case 0:
                 return True
@@ -288,8 +296,11 @@ def continue_process() -> bool:
     Returns:
         bool: True if the user wants to continue, False otherwise.
     """
+    answer = None
+    while answer is None:
+        answer = get_yes_no("Do you want to continue with the voter Registration?")
 
-    return get_yes_no("Do you want to continue with the voter Registration?")
+    return answer
 
 def main():
     """
