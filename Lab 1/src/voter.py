@@ -56,39 +56,6 @@ class Voter:
         return self.first_name is not None and self.last_name is not None and self.age is not None \
             and self.us_citizen is not None and self.state is not None and self.zip_code is not None
 
-    def get_info(self) -> int:
-        """
-        Get voter information including first name, 
-        last name, age, citizenship status, state, and zip code.
-
-        Returns:
-            int:0 if all information is successfully obtained, 
-                1 if the user chooses to stop the process at any point,
-                2 if the user's age is not eligible for voter registration.
-        """
-
-        for i in range(6):
-            match i:
-                case 0:
-                    self.get_string(self.set_first, "Please Enter Your First Name")
-                case 1:
-                    self.get_string(self.set_last, "Please Enter Your Last Name")
-                case 2:
-                    if self.get_age() is False:
-                        return 2
-                case 3:
-                    self.get_us()
-                    if self.us_citizen is False:
-                        return 2
-                case 4:
-                    self.get_state()
-                case 5:
-                    self.get_zip()
-            if i < 5:
-                if continue_process() is False:
-                    return 1
-        return 0
-
     def get_string(self, set_string_function, question : str):
         """
         Prompt the user to provide a string value
@@ -148,8 +115,7 @@ class Voter:
             bool: True if the user's age is valid and 
             eligible for voter registration, False otherwise.
         """
-        while self.set_age(get_int_entry("Please provide age")) is False:
-            continue
+        return self.set_age(get_int_entry("Please provide age"))
 
     def set_age(self, new_value : int) -> bool:
         """
@@ -336,7 +302,7 @@ def get_yes_no(question : str) -> bool:
     print("Invalid Selection")
     return None
 
-def edit_voter(new_voter : Voter) -> bool:
+def edit_voter(new_voter : Voter) -> int:
     """
     Edit the information of a voter.
 
@@ -344,39 +310,50 @@ def edit_voter(new_voter : Voter) -> bool:
         new_voter (Voter): The voter whose information is being edited.
 
     Returns:
-        None
+        int: 
+            - 0 if registration is complete and valid.
+            - 1 if user quits.
+            - 2 if information is incomplete or invalid.
     """
 
     while True:
         user_selection = None
         print("Current Information")
-        print(new_voter)
-        print("1) Edit First Name")
-        print("2) Edit Last Name")
-        print("3) Edit Age")
-        print("4) Edit State")
-        print("5) Edit Zip Code")
-        print("0) Complete")
+        print(f"{'1) Edit First Name':<18} : {new_voter.first_name}")
+        print(f"{'2) Edit Last Name':<18} : {new_voter.last_name}")
+        print(f"{'3) Edit Age':<18} : {new_voter.age}")
+        print(f"{'4) Edit US Citizen':<18} : {new_voter.us_citizen}")
+        print(f"{'5) Edit State':<18} : {new_voter.state}")
+        print(f"{'6) Edit Zip Code':<18} : {new_voter.zip_code}")
+        print("7) Submit")
+        print("0) Quit")
         while user_selection is None:
             user_selection = get_int_entry("")
 
         match user_selection:
             case 0:
-                return True
+                return 1
             case 1:
-                new_voter.get_first()
+                new_voter.get_string(new_voter.set_first, "Please Enter Your First Name")
             case 2:
-                new_voter.get_last()
+                new_voter.get_string(new_voter.set_last, "Please Enter Your Last Name")
             case 3:
-                cached_age = new_voter.age
-                new_voter.get_age()
-                if new_voter.age < 18 or new_voter.age > 120:
-                    print("Invalid Age. Age has not been modified!!")
-                    new_voter.age = cached_age
+                if new_voter.get_age() is False:
+                    return 1
             case 4:
-                new_voter.get_state()
+                new_voter.get_us()
+                if new_voter.us_citizen is False:
+                    print("You must be a U.S. Citizen to vote")
+                    return 1
             case 5:
+                new_voter.get_state()
+            case 6:
                 new_voter.get_zip()
+            case 7:
+                if new_voter.validate() is False:
+                    return 2
+
+                return 0
 
 def continue_process() -> bool:
     """
@@ -387,7 +364,7 @@ def continue_process() -> bool:
     """
     answer = None
     while answer is None:
-        answer = get_yes_no("Do you want to continue with the voter Registration?")
+        answer = get_yes_no("Would you like to register as a U.S. voter?")
 
     return answer
 
@@ -408,23 +385,18 @@ def main():
         return
 
     new_voter = Voter()
-    match new_voter.get_info():
-        case 2:
-            print("Invalid Registration")
-            return
-        case 1:
-            print("Registration Aborted")
-            return
-    if new_voter.validate() is False:
-        print("Invalid Registration")
+    while True:
+        match edit_voter(new_voter):
+            case 0:
+                break
+            case 1:
+                print("Registration process aborted.")
+                return
+            case 2:
+                print("Please complete all fields in the form")
 
     print("Thanks for registering to vote. Here is the information we received:")
     print(new_voter)
-    # while True:
-    #     if get_yes_no("Is this information correct?") is False:
-    #         edit_voter(new_voter)
-    #     else:
-    #         break
 
     print("Thanks for trying the Voter Registration Application.")
     print("Your voter registration card should be shipped within 3 weeks.")
