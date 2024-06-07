@@ -7,25 +7,25 @@ if [ "$#" -ne 1 ]; then
     echo "Illegal number of parameters"
     exit 1;
 fi
-
+scriptname=`echo ${PWD##*/} | tr '[:upper:]' '[:lower:]'`
 case $1 in
     run)
-        echo "Running src/${PWD##*/}.py ..."
-        python src/${PWD##*/}.py
+        echo "Running src/${scriptname}.py ..."
+        python src/${scriptname}.py
         ;;
     lint)
         echo "Linting..."
-        pylint src/${PWD##*/}.py
+        pylint src/${scriptname}.py
         ;;
     test)
         echo "Testing..."
-        pytest tests/${PWD##*/}_tests.py
+        pytest tests/${scriptname}_tests.py
         ;;
     all)
         echo "All..."
-        pylint src/${PWD##*/}.py
-        pytest tests/${PWD##*/}_tests.py
-        python src/${PWD##*/}.py
+        pylint src/${scriptname}.py
+        pytest tests/${scriptname}_tests.py
+        python src/${scriptname}.py
         ;;
 *)
     echo "$1 is not supported"

@@ -11,6 +11,7 @@ else
   exit 2;
 fi
 
+scriptname=`echo $1 | tr '[:upper:]' '[:lower:]'`
 cp ./project.sh $1/
-touch $1/src/$1.py
-touch $1/tests/$1_tests.py
+touch $1/src/$scriptname.py
+touch $1/tests/${scriptname}_tests.py
