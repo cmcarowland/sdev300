@@ -76,11 +76,15 @@ def get_yes_no(question : str) -> bool:
     return None
 
 def menu() -> int:
-    """asdf
+    """
+    Display a menu of options and prompt the user for a selection.
+
+    Returns:
+        int: 1 if the user chooses to quit, 0 otherwise.
     """
 
     user_selection = None
-    print("Current Information")
+    print("")
     print('1) Generate Secure Password')
     print('2) Calculate and Format a percentage')
     print('3) Days until July 4, 2025')
@@ -103,14 +107,18 @@ def menu() -> int:
             pass
         case 5:
             pass
+        case _:
+            print("Invalid Option")
+
+    return 0
 
 def main():
     """
-    Main function for the Python Voter Registration Application.
+    Main function for the Python Math and Secret Functions application.
 
-    This function runs the voter registration process. It prompts the user to
-    continue with the registration, creates a new voter instance, allows the user to
-    review and edit the entered information, and provides a confirmation message.
+    This function controls the flow of the program by repeatedly displaying the menu
+    and processing the user's choice until the user chooses to quit. After quitting,
+    it prints a thank you message.
 
     Returns:
         None
@@ -118,6 +126,8 @@ def main():
 
     while menu() == 0:
         continue
+
+    print("Thank you for using the Math and Secret Functions application")
 
 if __name__ == "__main__":
     main()
