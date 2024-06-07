@@ -16,6 +16,16 @@
 - [ ] Submit .py and .doc as deliverables
 
 ## Lab 2
+- [ ] Create Python CLI for Math and Secret functions
+  - [ ] Create secure password generator
+  - [ ] Create Percentage calculator
+  - [ ] Create data calculator
+  - [ ] Create cosine calculator
+  - [ ] Calculate the volume of a right circular cylinder
+    - ***Volume of Circular Cylinder = (πr2) × Height***
+- [ ] Create word document that contains the results of pylint output and test results
+- [ ] Submit .py and .doc as deliverables
+
 ## Lab 3
 ## Lab 4
 ## Lab 5
