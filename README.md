@@ -1,17 +1,17 @@
 # SDEV 300
 ## Lab 1
-- [ ] Create Python Voter registration Application
-  - [ ] Prompt user for :
-    - [ ] first name
-    - [ ] last name
-    - [ ] age
-      - [ ] Validate age is number and >= 18 && <= 120
-    - [ ] country of citizenship
-    - [ ] state of residence (2 letter combinations for states)
-    - [ ] zipcode
-  - [ ] Reprompt is user data is invalid
-  - [ ] Give the user the option to exit the program at any time during the process
-  - [ ] Congratulate user on successful entry of data
+- [x] Create Python Voter registration Application
+  - [x] Prompt user for :
+    - [x] first name
+    - [x] last name
+    - [x] age
+      - [x] Validate age is number and >= 18 && <= 120
+    - [x] country of citizenship
+    - [x] state of residence (2 letter combinations for states)
+    - [x] zipcode
+  - [x] Reprompt is user data is invalid
+  - [x] Give the user the option to exit the program at any time during the process
+  - [x] Congratulate user on successful entry of data
 - [ ] Create word document that contains the results of pylint output and test results
 - [ ] Submit .py and .doc as deliverables
 
