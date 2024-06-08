@@ -1,4 +1,6 @@
 """ Lab 2 """
+from datetime import datetime
+import random
 
 def get_string_entry(question : str) -> str:
     """
@@ -75,12 +77,166 @@ def get_yes_no(question : str) -> bool:
     print("Invalid Selection")
     return None
 
-def menu() -> int:
+def format_percent(value:float, places:int) -> str:
     """
-    Display a menu of options and prompt the user for a selection.
+    Formats a percentage value to a string with a specified 
+    number of decimal places.
+
+    Parameters:
+        value (float): The percentage value to format.
+        places (int): The number of decimal places to display.
 
     Returns:
-        int: 1 if the user chooses to quit, 0 otherwise.
+        str: The formatted percentage string.
+    """
+
+
+    return f'{value * 100:.{places}f}'
+
+def calculate_percentage(a:float, b:float) -> float:
+    """
+    Calculates the percentage of one number relative to another.
+
+    Parameters:
+        a (float): The first number.
+        b (float): The second number.
+
+    Returns:
+        float: The percentage of `a` relative to `b`.
+            -1 if either `a` or `b` is less than or equal to 0.
+    """
+
+
+    if a <= 0 or b <= 0:
+        return -1
+
+    return a / b
+
+def percentage() -> int:
+    """
+    Calculates the percentage of one number relative to another and prints it.
+
+    This function prompts the user to input two numbers and the number of decimal places
+    to display in the result. It then calculates the percentage of the first number relative
+    to the second number and prints the result.
+
+    Returns:
+        int: 0 if the percentage is successfully calculated and printed.
+            3 if there are invalid inputs or errors during the calculation.
+    """
+
+    val1 = get_int_entry("Enter the first number")
+    val2 = get_int_entry("Enter the second number")
+    places = get_int_entry("Enter the number of places to display")
+    if val1 is None or val2 is None:
+        print("Invalid Inputs.  Please Try Again")
+        return 3
+
+    percent = calculate_percentage(val1, val2)
+    if percent == -1 or places is None or places < 0:
+        print("Invalid Inputs.  Please Try Again")
+        return 3
+
+    print(f'\nThe Percentage is : {format_percent(percent, places)}')
+    return 0
+
+def get_days():
+    """
+    Prints the number of days until July 4, 2025.
+
+    This function calculates the number of days remaining until July 4, 2025,
+    based on the current date.
+
+    Note:
+        This function does not take any parameters.
+
+    Returns:
+        None
+    """
+
+    date_str = '07-04-2025'
+
+    date_object = datetime.strptime(date_str, '%m-%d-%Y')
+    print(f'\nDays until July 4, 2025 : {(date_object - datetime.now()).days}')
+
+def get_password(length:int, has_upper:bool, has_lower:bool,\
+     has_digits:bool, has_special:bool) -> str:
+    """
+    Generates a password based on provided parameters.
+
+    Parameters:
+        length (int): The length of the password.
+        has_upper (bool): Whether the password should contain uppercase letters.
+        has_lower (bool): Whether the password should contain lowercase letters.
+        has_digits (bool): Whether the password should contain digits.
+        has_special (bool): Whether the password should contain special characters.
+
+    Returns:
+        str: The generated password.
+            None if unable to generate a password due to invalid input.
+    """
+
+    if length == 0 or not (has_upper or has_lower or has_digits or has_special):
+        print("Cannot generate a password")
+        return None
+
+    possible_characters = []
+    if has_upper:
+        possible_characters.extend(range(0x41, 0x41+26))
+    if has_lower:
+        possible_characters.extend(range(0x61, 0x61+26))
+    if has_digits:
+        possible_characters.extend(range(0x30, 0x3a))
+    if has_special:
+        possible_characters.extend(range(0x21, 0x30))
+
+    password = []
+    for _ in range(length):
+        password.append(chr(random.choice(possible_characters)))
+
+    return ''.join(password)
+
+def create_password() -> int:
+    """
+    Generates a password based on user input and prints it.
+
+    This function prompts the user to input parameters for generating a password, including length,
+    whether it should contain uppercase letters, lowercase letters, digits, and special characters.
+
+    Returns:
+        int: 0 if a password is successfully generated and printed.
+            3 if it's unable to generate a password (either due to invalid input or other errors).
+    """
+
+    length = get_int_entry("Enter Password Length")
+    has_upper = get_yes_no("Does password have Uppercase letters?")
+    has_lower = get_yes_no("Does password have Lowercase letters?")
+    has_digits = get_yes_no("Does password have digits?")
+    has_special = get_yes_no("Does password have special characters?")
+
+    if length == 0 or not (has_upper or has_lower or has_digits or has_special):
+        print("Cannot generate a password")
+        return 3
+
+    pw = get_password(length, has_upper, has_lower, has_digits, has_special)
+    if pw is None:
+        return 3
+
+    print(f"\nThe Password is : {pw}")
+    return 0
+
+def menu() -> int:
+    """
+    Displays a menu of options and performs the selected action.
+
+    This function displays a menu with various options for the user to choose from.
+    Based on the user's selection, it performs the corresponding action.
+
+    Returns:
+        int: An integer indicating the status of the menu operation:
+            - 0 if the menu operation is successful.
+            - 1 if the user chooses to quit.
+            - 2 if there is an invalid option selected or other errors occur.
     """
 
     user_selection = None
@@ -91,24 +247,24 @@ def menu() -> int:
     print('4) Calculate Leg of a Triangle')
     print('5) Calculate Volume of a right circulat cylinder')
     print("0) Quit")
-    while user_selection is None:
-        user_selection = get_int_entry("")
+    user_selection = get_int_entry("")
 
     match user_selection:
         case 0:
             return 1
         case 1:
-            pass
+            return create_password()
         case 2:
-            pass
+            return percentage()
         case 3:
-            pass
+            return get_days()
         case 4:
             pass
         case 5:
             pass
         case _:
             print("Invalid Option")
+            return 2
 
     return 0
 
@@ -124,7 +280,7 @@ def main():
         None
     """
 
-    while menu() == 0:
+    while menu() != 1:
         continue
 
     print("Thank you for using the Math and Secret Functions application")
