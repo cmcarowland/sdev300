@@ -1,6 +1,7 @@
 """ Lab 2 """
 from datetime import datetime
 import random
+import math
 
 def get_string_entry(question : str) -> str:
     """
@@ -225,6 +226,51 @@ def create_password() -> int:
     print(f"\nThe Password is : {pw}")
     return 0
 
+def calculate_triangle(side_a: int, side_b:int, angle:int) -> float:
+    """
+    Calculate the length of the third side of a triangle given two sides and the included angle.
+
+    Args:
+        side_a (int): Length of the first side of the triangle.
+        side_b (int): Length of the second side of the triangle.
+        angle (int): Measure of the included angle between the first and second sides, in degrees.
+
+    Returns:
+        float: Length of the third side of the triangle.
+                Returns -1 if any of the inputs are None or if any side or angle is less than or equal to zero.
+    """
+
+    if side_a is None or side_b is None or angle is None:
+        return -1
+
+    if side_a <= 0 or side_b <= 0 or angle <= 0:
+        return -1
+
+    c = math.sqrt(math.pow(side_a, 2) + math.pow(side_b, 2) - \
+         2 * side_a * side_b * math.cos(math.radians(angle)))
+    return c
+
+def get_triangle_for_user() -> int:
+    side_a = get_int_entry("Enter Length of Side a")
+    side_b = get_int_entry("Enter Lenghth of Side b")
+    angle = get_int_entry("Enter angle of C")
+
+    if side_a is None or side_b is None or angle is None:
+        print("Invalid Parameters for triangle, please try again")
+        return 3
+
+    if side_a <= 0 or side_b <= 0 or angle <= 0:
+        print("Invalid Parameters for triangle, please try again")
+        return 3
+
+    side_c_len = calculate_triangle(side_a, side_b, angle)
+    if side_c_len == -1:
+        print("Invalid Parameters for triangle, please try again")
+        return 3
+
+    print(f"\nThe Length of side c is {side_c_len}")
+    return 0
+
 def menu() -> int:
     """
     Displays a menu of options and performs the selected action.
@@ -259,8 +305,9 @@ def menu() -> int:
         case 3:
             return get_days()
         case 4:
-            pass
+            return get_triangle_for_user()
         case 5:
+            #Volume of Circular Cylinder = (πr2) × Height
             pass
         case _:
             print("Invalid Option")

@@ -52,3 +52,23 @@ def test_get_password():
     random.seed(10)
     for case in test_cases:
         assert lab2.get_password(case[0], case[1], case[2], case[3], case[4]) == case[5]
+
+def test_calculate_triangle():
+    """
+    """
+
+    test_cases = [
+        [11, 8, 37, 6.666344592929206],
+        [None, 5, 20, -1],
+        [10, None, 20, -1],
+        [10, 20, None, -1],
+        [10, 20, 50, 15.584766797273042],
+        [-10, 20, 50, -1],
+        [10, -20, 50, -1],
+        [10, 20, -50, -1],
+        [10, 10, 60, 9.999999999999998],
+    ]
+
+    random.seed(10)
+    for case in test_cases:
+        assert lab2.calculate_triangle(case[0], case[1], case[2]) == case[3]
