@@ -1,12 +1,39 @@
-import lab2
+"""
+Test module for the lab2 module.
+
+This module contains unit tests for the functions 
+implemented in the lab2 module.
+
+Functions:
+    test_calculate_percentage: Test the calculate_percentage function.
+    test_get_password: Test the get_password function.
+    test_calculate_triangle: Test the calculate_triangle function.
+    test_calculate_cylinder: Test the 
+        calculate_volume_of_cylinder function.
+    _menu: Test the _menu function.
+
+Each test function checks different functionalities 
+of the lab2 module to ensure they work as expected under various conditions.
+
+Raises:
+    AssertionError: If any of the test cases fail, 
+    indicating a mismatch between expected and actual outcomes.
+"""
+
 import random
+import lab2
 
-def _menu(monkeypatch):
-    """This function tests different inputs for the menu.
-
-        test_cases:
-            Contains the case and expected result
+def tes_menu(monkeypatch):
     """
+    Test the _menu function.
+
+    This function tests different inputs for the menu.
+
+    Raises:
+        AssertionError: If the returned result from the
+         menu does not match the expected value.
+    """
+
     test_cases = {'1':0, '2':0, '3':0, '4':0, '5':0, '6':2, '0':1, 'a':2,'hello':2}
     for k,v in test_cases.items():
         monkeypatch.setattr('builtins.input', lambda _: k)
@@ -14,6 +41,13 @@ def _menu(monkeypatch):
 
 def test_calculate_percentage():
     """
+    Test the calculate_percentage function.
+
+    The function tests various scenarios of calculate_percentage function.
+
+    Raises:
+        AssertionError: If the calculated percentage does 
+        not match the expected value.
     """
 
     test_cases = [
@@ -31,6 +65,13 @@ def test_calculate_percentage():
 
 def test_get_password():
     """
+    Test the get_password function.
+
+    The function tests various scenarios of the get_password function.
+
+    Raises:
+        AssertionError: If the generated password does 
+        not match the expected value.
     """
 
     test_cases = [
@@ -55,6 +96,14 @@ def test_get_password():
 
 def test_calculate_triangle():
     """
+    Test the calculate_triangle function.
+
+    The function tests various scenarios 
+    of the calculate_triangle function.
+
+    Raises:
+        AssertionError: If the calculated length of the 
+        third side does not match the expected value.
     """
 
     test_cases = [
@@ -75,6 +124,14 @@ def test_calculate_triangle():
 
 def test_calculate_cylinder():
     """
+    Test the calculate_volume_of_cylinder function.
+
+    The function tests various scenarios of the
+     calculate_volume_of_cylinder function.
+
+    Raises:
+        AssertionError: If the calculated volume 
+        of the cylinder does not match the expected value.
     """
 
     test_cases = [
