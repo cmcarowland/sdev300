@@ -237,7 +237,8 @@ def calculate_triangle(side_a: int, side_b:int, angle:int) -> float:
 
     Returns:
         float: Length of the third side of the triangle.
-                Returns -1 if any of the inputs are None or if any side or angle is less than or equal to zero.
+                Returns -1 if any of the inputs are None or 
+                if any side or angle is less than or equal to zero.
     """
 
     if side_a is None or side_b is None or angle is None:
@@ -251,8 +252,18 @@ def calculate_triangle(side_a: int, side_b:int, angle:int) -> float:
     return c
 
 def get_triangle_for_user() -> int:
+    """
+    Prompt the user to enter the dimensions of a triangle
+     and calculate the length of its third side.
+
+    Returns:
+        int: 0 if the operation was successful, 3 if 
+        invalid parameters were provided.
+    """
+
+
     side_a = get_int_entry("Enter Length of Side a")
-    side_b = get_int_entry("Enter Lenghth of Side b")
+    side_b = get_int_entry("Enter Length of Side b")
     angle = get_int_entry("Enter angle of C")
 
     if side_a is None or side_b is None or angle is None:
@@ -269,6 +280,53 @@ def get_triangle_for_user() -> int:
         return 3
 
     print(f"\nThe Length of side c is {side_c_len}")
+    return 0
+
+def calculate_volume_of_cylinder(radius:int, height:int) -> float:
+    """
+    Calculate the volume of a cylinder.
+
+    Args:
+        radius (int): Radius of the cylinder.
+        height (int): Height of the cylinder.
+
+    Returns:
+        float: Volume of the cylinder.
+            Returns -1 if either radius or 
+            height is None or if either is less than or equal to zero.
+    """
+
+
+    if radius is None or height is None or radius <= 0 or height <= 0:
+        return -1
+
+    return math.pi * math.pow(radius, 2) * height
+
+def get_cylinder_volume() -> int:
+    """
+    Prompt the user to enter the dimensions of a cylinder and calculate its volume.
+
+    Returns:
+        int: 0 if the operation was successful, 3 if invalid parameters were provided.
+    """
+
+    radius = get_int_entry("Enter Radius of Cylinder")
+    height = get_int_entry("Enter Height of Cylinder")
+
+    if radius is None or height is None:
+        print("Invalid Parameters for cylinder, please try again")
+        return 3
+
+    if radius <= 0 or height <= 0:
+        print("Invalid Parameters for cylinder, please try again")
+        return 3
+
+    vol = calculate_volume_of_cylinder(radius, height)
+    if vol == -1:
+        print("Invalid Parameters for cylinder, please try again")
+        return 3
+
+    print(f"\nThe Volume of a cylinder with H: {height} R: {radius} is {vol}")
     return 0
 
 def menu() -> int:
@@ -291,29 +349,30 @@ def menu() -> int:
     print('2) Calculate and Format a percentage')
     print('3) Days until July 4, 2025')
     print('4) Calculate Leg of a Triangle')
-    print('5) Calculate Volume of a right circulat cylinder')
+    print('5) Calculate Volume of a right circular cylinder')
     print("0) Quit")
     user_selection = get_int_entry("")
-
+    out_value = 1
     match user_selection:
         case 0:
-            return 1
+            out_value = 1
         case 1:
-            return create_password()
+            out_value = create_password()
         case 2:
-            return percentage()
+            out_value = percentage()
         case 3:
-            return get_days()
+            get_days()
+            out_value = 0
         case 4:
-            return get_triangle_for_user()
+            out_value = get_triangle_for_user()
         case 5:
             #Volume of Circular Cylinder = (πr2) × Height
-            pass
+            return get_cylinder_volume()
         case _:
             print("Invalid Option")
-            return 2
+            out_value = 2
 
-    return 0
+    return out_value
 
 def main():
     """
