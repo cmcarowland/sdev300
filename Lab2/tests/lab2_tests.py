@@ -118,7 +118,6 @@ def test_calculate_triangle():
         [10, 10, 60, 9.999999999999998],
     ]
 
-    random.seed(10)
     for case in test_cases:
         assert lab2.calculate_triangle(case[0], case[1], case[2]) == case[3]
 
@@ -143,6 +142,5 @@ def test_calculate_cylinder():
         [2, 2, 25.132741228718345],
     ]
 
-    random.seed(10)
     for case in test_cases:
         assert lab2.calculate_volume_of_cylinder(case[0], case[1]) == case[2]
