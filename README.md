@@ -27,6 +27,28 @@
 - [ ] Submit .py and .doc as deliverables
 
 ## Lab 3
+- [ ] Display all U.S. States in Alphabetical order along with the
+Capital, State Population, and Flower
+  - [x] Create a state class
+    - [x] Name
+    - [x] Abbreviation
+    - [x] Population
+    - [x] Image Path or URL??
+    - [x] Flower Name
+  - [x] Sort by alphabetical order of states by name
+- [ ] Search for a specific state and display the appropriate Capital
+name, State Population, and an image of the associated State Flower.
+  - [ ] Use find to check for a given state 
+  - [x] Use plot to show the state flower
+- [ ] Provide a Bar graph of the top 5 populated States showing their
+overall population.
+  - [x] Sort states by population
+  - [ ] Use plot to display to 5 in bar format
+- [ ] Update the overall state population for a specific state.
+  - [ ] Sanitize user input
+  - [ ] Set State population
+- [ ] Exit the program
+
 ## Lab 4
 ## Lab 5
 ## Lab 6

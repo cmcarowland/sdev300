@@ -11,7 +11,7 @@ scriptname=`echo ${PWD##*/} | tr '[:upper:]' '[:lower:]'`
 case $1 in
     run)
         echo "Running src/${scriptname}.py ..."
-        python src/${scriptname}.py
+        ipython src/${scriptname}.py
         ;;
     lint)
         echo "Linting..."
@@ -25,7 +25,7 @@ case $1 in
         echo "All..."
         pylint src/${scriptname}.py
         pytest tests/${scriptname}_tests.py -vv
-        python src/${scriptname}.py
+        ipython src/${scriptname}.py
         ;;
 *)
     echo "$1 is not supported"
