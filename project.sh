@@ -19,12 +19,12 @@ case $1 in
         ;;
     test)
         echo "Testing..."
-        pytest tests/${scriptname}_tests.py
+        pytest tests/${scriptname}_tests.py -vv
         ;;
     all)
         echo "All..."
         pylint src/${scriptname}.py
-        pytest tests/${scriptname}_tests.py
+        pytest tests/${scriptname}_tests.py -vv
         python src/${scriptname}.py
         ;;
 *)
