@@ -12,10 +12,20 @@
   - [x] Reprompt is user data is invalid
   - [x] Give the user the option to exit the program at any time during the process
   - [x] Congratulate user on successful entry of data
-- [ ] Create word document that contains the results of pylint output and test results
+- [x] Create word document that contains the results of pylint output and test results
 - [ ] Submit .py and .doc as deliverables
 
 ## Lab 2
+- [x] Create Python CLI for Math and Secret functions
+  - [x] Create secure password generator
+  - [x] Create Percentage calculator
+  - [x] Create data calculator
+  - [x] Create cosine calculator
+  - [x] Calculate the volume of a right circular cylinder
+    - ***Volume of Circular Cylinder = (πr2) × Height***
+- [x] Create word document that contains the results of pylint output and test results
+- [ ] Submit .py and .doc as deliverables
+
 ## Lab 3
 ## Lab 4
 ## Lab 5
