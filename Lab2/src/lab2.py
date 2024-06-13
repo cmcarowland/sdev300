@@ -215,7 +215,7 @@ def create_password() -> int:
     has_digits = get_yes_no("Does password have digits?")
     has_special = get_yes_no("Does password have special characters?")
 
-    if length == 0 or not (has_upper or has_lower or has_digits or has_special):
+    if length is None or length <= 0 or not (has_upper or has_lower or has_digits or has_special):
         print("Cannot generate a password")
         return 3
 
