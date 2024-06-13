@@ -147,8 +147,10 @@ class Voter:
         Returns:
             None
         """
-        while self.us_citizen is None:
+        while True:
             self.us_citizen = get_yes_no("Are you a U.S. Citizen?")
+            if self.us_citizen is not None:
+                break
 
     def set_us(self, is_us : bool) -> bool:
         """
