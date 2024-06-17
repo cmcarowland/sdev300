@@ -1,0 +1,302 @@
+[
+    {
+        "capitol": "Albany",
+        "state": "New York",
+        "population": 19469232,
+        "flower": "Rose"
+    },
+    {
+        "capitol": "Annapolis",
+        "state": "Maryland",
+        "population": 6196525,
+        "flower": "Black-Eyed Susan"
+    },
+    {
+        "capitol": "Atlanta",
+        "state": "Georgia",
+        "population": 11145304,
+        "flower": "Cherokee Rose"
+    },
+    {
+        "capitol": "Augusta",
+        "state": "Maine",
+        "population": 1402106,
+        "flower": "White Pine Cone and Tassel"
+    },
+    {
+        "capitol": "Austin",
+        "state": "Texas",
+        "population": 30976754,
+        "flower": "Bluebonnet"
+    },
+    {
+        "capitol": "Baton Rouge",
+        "state": "Louisiana",
+        "population": 4559475,
+        "flower": "Magnolia"
+    },
+    {
+        "capitol": "Bismarck",
+        "state": "North Dakota",
+        "population": 788940,
+        "flower": "Wild prairie rose"
+    },
+    {
+        "capitol": "Boise City",
+        "state": "Idaho",
+        "population": 1990456,
+        "flower": "Syringa, mock orange"
+    },
+    {
+        "capitol": "Boston",
+        "state": "Massachusetts",
+        "population": 7020058,
+        "flower": "Mayflower"
+    },
+    {
+        "capitol": "Carson City",
+        "state": "Nevada",
+        "population": 3210931,
+        "flower": "Sagebrush"
+    },
+    {
+        "capitol": "Charleston",
+        "state": "West Virginia",
+        "population": 1766107,
+        "flower": "Rhododendron"
+    },
+    {
+        "capitol": "Cheyenne",
+        "state": "Wyoming",
+        "population": 586485,
+        "flower": "Indian paintbrush"
+    },
+    {
+        "capitol": "Columbia",
+        "state": "South Carolina",
+        "population": 5464155,
+        "flower": "Yellow jessamine"
+    },
+    {
+        "capitol": "Columbus",
+        "state": "Ohio",
+        "population": 11812173,
+        "flower": "Scarlet carnation"
+    },
+    {
+        "capitol": "Concord",
+        "state": "New Hampshire",
+        "population": 1405105,
+        "flower": "Purple lilac"
+    },
+    {
+        "capitol": "Denver",
+        "state": "Colorado",
+        "population": 5914181,
+        "flower": "Colorado blue columbine"
+    },
+    {
+        "capitol": "Des Moines",
+        "state": "Iowa",
+        "population": 3214315,
+        "flower": "Wild rose"
+    },
+    {
+        "capitol": "Dover",
+        "state": "Delaware",
+        "population": 1044321,
+        "flower": "Peach blossom"
+    },
+    {
+        "capitol": "Frankfort",
+        "state": "Kentucky",
+        "population": 4540745,
+        "flower": "Goldenrod"
+    },
+    {
+        "capitol": "Harrisburg",
+        "state": "Pennsylvania",
+        "population": 12951275,
+        "flower": "Mountain laurel"
+    },
+    {
+        "capitol": "Hartford",
+        "state": "Connecticut",
+        "population": 3625646,
+        "flower": "Mountain laurel"
+    },
+    {
+        "capitol": "Helena",
+        "state": "Montana",
+        "population": 1142746,
+        "flower": "Bitterroot"
+    },
+    {
+        "capitol": "Honolulu",
+        "state": "Hawaii",
+        "population": 1430877,
+        "flower": "Hawaiian hibiscus"
+    },
+    {
+        "capitol": "Indianapolis (balance)",
+        "state": "Indiana",
+        "population": 6892124,
+        "flower": "Peony"
+    },
+    {
+        "capitol": "Jackson",
+        "state": "Mississippi",
+        "population": 2940452,
+        "flower": "Magnolia"
+    },
+    {
+        "capitol": "Jefferson City",
+        "state": "Missouri",
+        "population": 6215144,
+        "flower": "Hawthorn"
+    },
+    {
+        "capitol": "Juneau",
+        "state": "Alaska",
+        "population": 733536,
+        "flower": "Forget-me-not"
+    },
+    {
+        "capitol": "Lansing",
+        "state": "Michigan",
+        "population": 10041241,
+        "flower": "Apple blossom"
+    },
+    {
+        "capitol": "Lincoln",
+        "state": "Nebraska",
+        "population": 1988698,
+        "flower": "Goldenrod"
+    },
+    {
+        "capitol": "Little Rock",
+        "state": "Arkansas",
+        "population": 3089060,
+        "flower": "Apple blossom"
+    },
+    {
+        "capitol": "Madison",
+        "state": "Wisconsin",
+        "population": 5931367,
+        "flower": "Wood violet"
+    },
+    {
+        "capitol": "Montgomery",
+        "state": "Alabama",
+        "population": 5143033,
+        "flower": "Camellia"
+    },
+    {
+        "capitol": "Montpelier",
+        "state": "Vermont",
+        "population": 647818,
+        "flower": "Red clover"
+    },
+    {
+        "capitol": "Nashville-Davidson (balance)",
+        "state": "Tennessee",
+        "population": 7204002,
+        "flower": "Iris"
+    },
+    {
+        "capitol": "Oklahoma City",
+        "state": "Oklahoma",
+        "population": 4088377,
+        "flower": "Oklahoma rose"
+    },
+    {
+        "capitol": "Olympia",
+        "state": "Washington",
+        "population": 7841283,
+        "flower": "Coast rhododendron"
+    },
+    {
+        "capitol": "Phoenix",
+        "state": "Arizona",
+        "population": 7497004,
+        "flower": "Saguaro cactus blossom"
+    },
+    {
+        "capitol": "Pierre",
+        "state": "South Dakota",
+        "population": 928767,
+        "flower": ""
+    },
+    {
+        "capitol": "Providence",
+        "state": "Rhode Island",
+        "population": 1098082,
+        "flower": ""
+    },
+    {
+        "capitol": "Raleigh",
+        "state": "North Carolina",
+        "population": 10975017,
+        "flower": "Pasque flower"
+    },
+    {
+        "capitol": "Richmond",
+        "state": "Virginia",
+        "population": 8752297,
+        "flower": "American dogwood"
+    },
+    {
+        "capitol": "Sacramento",
+        "state": "California",
+        "population": 38989770,
+        "flower": "California poppy"
+    },
+    {
+        "capitol": "Salem",
+        "state": "Oregon",
+        "population": 4227337,
+        "flower": "Oregon grape"
+    },
+    {
+        "capitol": "Salt Lake City",
+        "state": "Utah",
+        "population": 3454232,
+        "flower": "Sego lily"
+    },
+    {
+        "capitol": "Santa Fe",
+        "state": "New Mexico",
+        "population": 2115266,
+        "flower": "Yucca flower"
+    },
+    {
+        "capitol": "Springfield",
+        "state": "Illinois",
+        "population": 12516863,
+        "flower": "Violet"
+    },
+    {
+        "capitol": "St. Paul",
+        "state": "Minnesota",
+        "population": 5761530,
+        "flower": "Pink and white lady's slipper"
+    },
+    {
+        "capitol": "Tallahassee",
+        "state": "Florida",
+        "population": 22975931,
+        "flower": "Orange blossom"
+    },
+    {
+        "capitol": "Topeka",
+        "state": "Kansas",
+        "population": 2944376,
+        "flower": "Sunflower"
+    },
+    {
+        "capitol": "Trenton",
+        "state": "New Jersey",
+        "population": 9320865,
+        "flower": "Violet"
+    }
+]
