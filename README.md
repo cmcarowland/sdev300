@@ -12,8 +12,8 @@
   - [x] Reprompt is user data is invalid
   - [x] Give the user the option to exit the program at any time during the process
   - [x] Congratulate user on successful entry of data
-- [ ] Create word document that contains the results of pylint output and test results
-- [ ] Submit .py and .doc as deliverables
+- [x] Create word document that contains the results of pylint output and test results
+- [x] Submit .py and .doc as deliverables
 
 ## Lab 2
 ## Lab 3
