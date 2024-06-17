@@ -13,7 +13,8 @@
   - [x] Give the user the option to exit the program at any time during the process
   - [x] Congratulate user on successful entry of data
 - [x] Create word document that contains the results of pylint output and test results
-- [ ] Submit .py and .doc as deliverables
+- [x] Submit .py and .doc as deliverables
+
 
 ## Lab 2
 - [x] Create Python CLI for Math and Secret functions
