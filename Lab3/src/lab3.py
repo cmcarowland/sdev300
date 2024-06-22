@@ -211,6 +211,8 @@ def main():
         state.flower = s['flower']
         states.append(state)
 
+    print('*' * 50 + "\n      Welcome to the python state application\n" + '*' * 50 + "\n")
+
     while True:
         menu()
         x = get_int_entry("")
@@ -257,6 +259,9 @@ def main():
                         print("Failed to set population")
             case 5:
                 break
+
+        print("Thank you for using the Python State Application")
+
 
 if __name__ == "__main__":
     main()

@@ -36,6 +36,23 @@ class State:
         return self.name
 
     def set_name(self, new_name :str) -> bool:
+        """
+        Set a new name for the state and update related attributes if the new name is valid.
+
+        Args:
+            new_name (str): The new name to set for the state.
+
+        Returns:
+            bool: True if the new name is valid and attributes are updated successfully,
+                False otherwise.
+
+        Notes:
+            - Updates `self.name` to `new_name`.
+            - Updates `self.abbreviation` based on `us_state_mapping`.
+            - Sets `self.flower_path` to an image path based on the new state name.
+
+        """
+
         if new_name not in us_state_names:
             return False
 
@@ -47,6 +64,24 @@ class State:
         return True
 
     def set_abb(self, new_name :str) -> bool:
+        """
+        Set a new abbreviation for the state and update 
+        related attributes if the new abbreviation is valid.
+
+        Args:
+            new_name (str): The new abbreviation to set for the state.
+
+        Returns:
+            bool: True if the new abbreviation is valid and attributes are updated successfully,
+                False otherwise.
+
+        Notes:
+            - Updates `self.abbreviation` to `new_name`.
+            - Sets `self.name` based on `us_state_mapping`.
+            - Sets `self.flower_path` to an image path based on the new state name.
+
+        """
+
         if new_name not in us_state_codes:
             return False
 
