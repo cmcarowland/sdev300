@@ -50,6 +50,36 @@ overall population.
 - [ ] Exit the program
 
 ## Lab 4
+- [ ]] Python Matrix Application
+  - [x] Enter Phone Number
+    - [x] Validate via regex
+    - [x] Loop until proper number is entered
+  - [x] Enter Zip in XXXXX-XXXX format
+    - [x] Validate with regex
+  - [x] Perform Matrix math
+    - [x] Get matrix inputs for 3x3 matrix
+      - [x] Validate inputs
+      - [x] Get 2 matrices
+    - [x] Addition
+    - [x] Subtraction
+    - [x] Matrix Mul
+    - [x] Element Mul
+    - [x] Display results
+    - [x] Transpose the matrix
+    - [x] Show mean for rows and columns
+  - [x] Genertate tests for functions
+  - [x] Create word document showing test results and expectations
+  - [x] Zip and turn in
+- [ ] Password Cracker Exercise
+  - [ ] 20 passwords
+    - [ ] 5 easy
+    - [ ] 5 salted easy
+    - [ ] 10 generated
+  - [ ] 3 hash algorithms
+    - [ ] MD5
+    - [ ] Sha256
+    - [ ] Sha512
+  - [ ] Docuement you results
 ## Lab 5
 ## Lab 6
 ## Lab 7
