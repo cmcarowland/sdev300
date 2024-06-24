@@ -260,7 +260,7 @@ def main():
             case 5:
                 break
 
-        print("Thank you for using the Python State Application")
+    print("Thank you for using the Python State Application")
 
 
 if __name__ == "__main__":
