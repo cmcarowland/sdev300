@@ -28,6 +28,21 @@ import numpy as np
 
 from input_base import get_int_entry
 
+def validate_phone_number(user_number : str) -> bool:
+    """
+    Validate a phone number in the format '###-###-####'.
+
+    Checks if the input string matches the format '###-###-####' and has a length of 12 characters.
+
+    Args:
+        user_number (str): The phone number to validate.
+
+    Returns:
+        bool: True if the phone number is valid (matches format and length), False otherwise.
+    """
+
+    return not (re.match(r'^(\d{3}-){2}\d{4}', user_number) is None or len(user_number) != 12)
+
 def get_phone_number() -> str:
     """
     Prompt the user to enter a phone number in the format XXX-XXX-XXXX and returns it.
@@ -39,8 +54,8 @@ def get_phone_number() -> str:
     print("Enter your phone number (XXX-XXX-XXXX): ")
 
     while True:
-        user_number = input()
-        if re.match(r'^(\d{3}-){2}\d{4}', user_number) is None or len(user_number) != 12:
+        user_number = input('')
+        if validate_phone_number(user_number) is False:
             print("Your phone number is not in the correct format. Please Try Again:")
         else:
             break
@@ -58,7 +73,7 @@ def get_zip_code() -> str:
     print("Enter your Zip code + 4 (XXXXX-XXXX): ")
 
     while True:
-        user_number = input()
+        user_number = input('')
         if re.match(r'^\d{5}-\d{4}', user_number) is None or len(user_number) != 10:
             print("Your zip code is not in the correct format. Please Try Again:")
         else:
@@ -109,7 +124,7 @@ def get_matrix(number:str)-> np.matrix:
     lines = []
     while len(lines) < 3:
         while True:
-            line = input()
+            line = input('')
             if len(line.split()) != 3:
                 print("Incorrect format, enter 3 numbers separated with a space")
             else:
