@@ -1,6 +1,6 @@
 """ Lab 2 """
 from datetime import datetime
-import random
+import secrets
 import math
 
 def get_string_entry(question : str) -> str:
@@ -193,7 +193,7 @@ def get_password(length:int, has_upper:bool, has_lower:bool,\
 
     password = []
     for _ in range(length):
-        password.append(chr(random.choice(possible_characters)))
+        password.append(chr(secrets.choice(possible_characters)))
 
     return ''.join(password)
 
