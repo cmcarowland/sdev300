@@ -69,14 +69,14 @@ def test_get_matrix(monkeypatch):
         ('first', '1 2\n4 5 6\n7 8 9\n', EOFError,
          "Incorrect format, enter 3 numbers separated with a space"),  
         # Non-numeric character in input
-        ('second', '9 8 7\n6 x 4\n3 2 1\n', ValueError,
+        ('second', '9 8 7\n6 x 4\n3 2 1\n', EOFError,
          "Incorrect format, enter 3 numbers separated with a space"),  
         # Incomplete input (not enough lines)
         ('third', '1 2 3\n4 5 6\n', EOFError,
          "Enter your third 3x3 matrix one line at a time separated by space (1 2 3)"),  
     ]
 
-    for number, input_str, error_type, error_msg in invalid_cases:
+    for number, input_str, error_type, _ in invalid_cases:
         mock_input = StringIO(input_str)
         monkeypatch.setattr('sys.stdin', mock_input)
         print(mock_input)

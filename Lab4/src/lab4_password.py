@@ -3,7 +3,7 @@ asdf
 """
 import hashlib
 import sys
-sys.path.insert(0,"../Lab2/src")
+sys.path.insert(0,"../../Lab2/src")
 
 from lab2 import get_password
 
@@ -15,9 +15,12 @@ def hash_pw(pw:str):
     print(f'MD5   : {md5.hexdigest()}')
     print(f'Sha256: {sha256.hexdigest()}')
     print(f'Sha512: {sha512.hexdigest()}')
+    print(f'{md5.hexdigest()}')
+    print(f'{sha256.hexdigest()}')
+    print(f'{sha512.hexdigest()}')
 
 def gen_pw() -> str:
-    x = get_password(10, True,True,True,True)
+    x = get_password(int(input("Enter Length >> ")), True,True,True,True)
     return x
 
 def get_pw() -> str:

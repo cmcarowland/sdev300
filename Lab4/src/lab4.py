@@ -125,6 +125,7 @@ def get_matrix(number:str)-> np.array:
     while len(lines) < 3:
         while True:
             line = input()
+
             if len(line.split()) != 3:
                 print("Incorrect format, enter 3 numbers separated with a space")
             else:
@@ -132,10 +133,10 @@ def get_matrix(number:str)-> np.array:
                     lines.append([int(x) for x in line.split()])
                 except ValueError:
                     print("Incorrect format, enter 3 numbers separated with a space")
-                    raise
+        
                 break
 
-    return np.array(lines)
+    return np.matrix(lines)
 
 def limit_places(f:float, places:int) -> str:
     """
