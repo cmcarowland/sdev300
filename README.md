@@ -70,16 +70,16 @@ overall population.
   - [x] Genertate tests for functions
   - [x] Create word document showing test results and expectations
   - [x] Zip and turn in
-- [ ] Password Cracker Exercise
-  - [ ] 20 passwords
-    - [ ] 5 easy
-    - [ ] 5 salted easy
-    - [ ] 10 generated
-  - [ ] 3 hash algorithms
-    - [ ] MD5
-    - [ ] Sha256
-    - [ ] Sha512
-  - [ ] Docuement you results
+- [x] Password Cracker Exercise
+  - [x] 20 passwords
+    - [x] 5 easy
+    - [x] 5 salted easy
+    - [x] 10 generated
+  - [x] 3 hash algorithms
+    - [x] MD5
+    - [x] Sha256
+    - [x] Sha512
+  - [x] Docuement your results
 ## Lab 5
 ## Lab 6
 ## Lab 7
