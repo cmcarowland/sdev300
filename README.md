@@ -88,9 +88,9 @@ overall population.
   - [ ] Main 
     - [ ] Open one of 2 files
       - [ ] Add data files to project
-    - [] Exit
-    - [] Welcome
-    - [] Goodbye
+    - [ ] Exit
+    - [ ] Welcome
+    - [ ] Goodbye
   - [ ] PopChange.csv
     - [ ] Pop Apr1
     - [ ] Pop Jul 1
