@@ -87,7 +87,7 @@ overall population.
 - [ ] Python data analysis application
   - [ ] Main 
     - [ ] Open one of 2 files
-      - [ ] Add data files to project
+      - [x] Add data files to project
     - [ ] Exit
     - [ ] Welcome
     - [ ] Goodbye
