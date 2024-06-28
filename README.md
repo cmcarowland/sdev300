@@ -27,7 +27,7 @@
 - [x] Submit .py and .doc as deliverables
 
 ## Lab 3
-- [ ] Display all U.S. States in Alphabetical order along with the
+- [x] Display all U.S. States in Alphabetical order along with the
 Capital, State Population, and Flower
   - [x] Create a state class
     - [x] Name
@@ -44,7 +44,7 @@ name, State Population, and an image of the associated State Flower.
 overall population.
   - [x] Sort states by population
   - [x] Use plot to display to 5 in bar format
-- [ x Update the overall state population for a specific state.
+- [x] Update the overall state population for a specific state.
   - [x] Sanitize user input
   - [x] Set State population
 - [x] Exit the program
@@ -85,7 +85,7 @@ overall population.
 
 ## Lab 5
 - [ ] Python data analysis application
-  - [] Main 
+  - [ ] Main 
     - [ ] Open one of 2 files
       - [ ] Add data files to project
     - [] Exit
