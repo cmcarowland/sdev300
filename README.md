@@ -84,7 +84,7 @@ overall population.
 - [ ] Submit .py and .doc as deliverables
 
 ## Lab 5
-- [ ] Python data analysis application
+- [x] Python data analysis application
   - [x] Main 
     - [x] Open one of 2 files
       - [x] Add data files to project
@@ -96,12 +96,12 @@ overall population.
     - [x] Pop Jul 1
     - [x] Change Pop
     - [x] Exit Data
-  - [ ] Housing.csv
-    - [ ] Age
-    - [ ] Bedrooms
-    - [ ] Built
-    - [ ] Rooms
-    - [ ] Utility
+  - [x] Housing.csv
+    - [x] Age
+    - [x] Bedrooms
+    - [x] Built
+    - [x] Rooms
+    - [x] Utility
   - [x] Function to get:
     - [x] Count 
     - [x] Mean 
