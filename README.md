@@ -81,7 +81,7 @@ overall population.
     - [x] Sha256
     - [x] Sha512
   - [x] Docuement your results
-- [ ] Submit .py and .doc as deliverables
+- [x] Submit .py and .doc as deliverables
 
 ## Lab 5
 - [ ] Python data analysis application
