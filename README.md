@@ -84,31 +84,31 @@ overall population.
 - [x] Submit .py and .doc as deliverables
 
 ## Lab 5
-- [ ] Python data analysis application
-  - [ ] Main 
-    - [ ] Open one of 2 files
-      - [ ] Add data files to project
-    - [ ] Exit
-    - [ ] Welcome
-    - [ ] Goodbye
-  - [ ] PopChange.csv
-    - [ ] Pop Apr1
-    - [ ] Pop Jul 1
-    - [ ] Change Pop
-    - [ ] Exit Data
-  - [ ] Housing.csv
-    - [ ] Age
-    - [ ] Bedrooms
-    - [ ] Built
-    - [ ] Rooms
-    - [ ] Utility
-  - [ ] Function to get:
-    - [ ] Count 
-    - [ ] Mean 
-    - [ ] Standard Deviation 
-    - [ ] Min 
-    - [ ] Max 
-    - [ ] Histogram, save to file and open in browser
+- [x] Python data analysis application
+  - [x] Main 
+    - [x] Open one of 2 files
+      - [x] Add data files to project
+    - [x] Exit
+    - [x] Welcome
+    - [x] Goodbye
+  - [x] PopChange.csv
+    - [x] Pop Apr1
+    - [x] Pop Jul 1
+    - [x] Change Pop
+    - [x] Exit Data
+  - [x] Housing.csv
+    - [x] Age
+    - [x] Bedrooms
+    - [x] Built
+    - [x] Rooms
+    - [x] Utility
+  - [x] Function to get:
+    - [x] Count 
+    - [x] Mean 
+    - [x] Standard Deviation 
+    - [x] Min 
+    - [x] Max 
+    - [x] Histogram, save to file and open in browser
   - [ ] Write tests
     - [ ] Document test results
   - [ ] Get Lint Results
