@@ -109,11 +109,11 @@ overall population.
     - [x] Min 
     - [x] Max 
     - [x] Histogram, save to file and open in browser
-  - [ ] Write tests
-    - [ ] Document test results
-  - [ ] Get Lint Results
-    - [ ] Document lint results
-- [ ] Submit .py and .doc as deliverables
+  - [x] Write tests
+    - [x] Document test results
+  - [x] Get Lint Results
+    - [x] Document lint results
+- [x] Submit .py and .doc as deliverables
 
 ## Lab 6
 ## Lab 7

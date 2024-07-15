@@ -126,7 +126,7 @@ class Data():
         - bool: True if calculation was successful, False if self.col is None.
         """
 
-        if self.col is None:
+        if self.col is None or self.col not in self.df.columns:
             print("\nInvalid Data Requested\n")
             return False
 
