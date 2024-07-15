@@ -1,5 +1,7 @@
 """Py tests for Lab 5"""
 
+import lab5
+
 import input_base
 
 def test_int_inputs(monkeypatch):
@@ -35,3 +37,29 @@ def test_is_null_or_whitespace():
     for case, result in test_cases.items():
         x = input_base.is_null_or_whitespace(case)
         assert x == result
+
+def test_data_calaulate():
+    """Tests the calculate function for population data
+    1) Tests the None type
+    2) Tests a valid column
+    3) Tests a nonsense column
+    """
+    pop_data = lab5.PopData()
+    assert pop_data.calculate() is False
+    pop_data.col = "Pop Apr 1"
+    assert pop_data.calculate() is True
+    pop_data.col = "ASDFAS"
+    assert pop_data.calculate() is False
+
+def test_data_calaulate_housing():
+    """Tests the calculate function for housing data
+    1) Tests the None type
+    2) Tests a valid column
+    3) Tests a nonsense column
+    """
+    h_data = lab5.HousingData()
+    assert h_data.calculate() is False
+    h_data.col = "BUILT"
+    assert h_data.calculate() is True
+    h_data.col = "ASDFAS"
+    assert h_data.calculate() is False
