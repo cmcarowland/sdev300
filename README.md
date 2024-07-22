@@ -116,5 +116,27 @@ overall population.
 - [x] Submit .py and .doc as deliverables
 
 ## Lab 6
+- [x] Flask web app
+  - [x] Include 3 routes
+  - [x] CSS style sheet in static
+  - [x] Use templates
+- [x] Page Requirements
+  - [x] Use 3 different tags
+    - [x] H1
+    - [x] H2
+    - [x] H4
+    - [x] H5
+  - [x] Use <p> tag
+  - [x] Add Comments to html
+  - [x] Make an ordered list
+  - [x] Make an unordered list
+  - [x] Link to 3 sites
+    - [x] iRacing
+    - [x] Quatro Designs
+    - [x] Steam
+  - [x] Display date and time on a page
+- [x] Write Tests for each page
+- [x] Upload project and .doc
+
 ## Lab 7
 ## Lab 8
