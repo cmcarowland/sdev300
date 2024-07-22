@@ -99,7 +99,7 @@ def create_app() -> Flask:
             str: Rendered HTML of '404.html'.
         """
 
-        return render_template("404.html", error=e)
+        return render_template("404.html", error=e), 404
 
     return a
 

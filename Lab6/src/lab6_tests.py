@@ -28,6 +28,6 @@ def test_games(client):
     assert b"Annihilation" in response.data
 
 def test_bad(client):
-    response = client.get("asdf")
-    assert 200 == response.status_code
+    response = client.get("/asdf")
+    assert 404 == response.status_code
     assert b"I'm sorry the webpage you requested is in another castle." in response.data
