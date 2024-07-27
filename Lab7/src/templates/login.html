@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<!-- Displays page showing info about my games -->
+<html>
+    <head>
+        <title>Login</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}"> 
+    </head>
+    <body>
+        <!-- Link back home -->
+        <div class="card-holder">
+            <div class="card-item">
+                <p>Login</p>
+                <h6 {{invalid}}>Invalid Login</h6>
+                <h6 {{invalid}}>Try again or sign up</h6>
+                <form method="post">
+                    <label for="uname">Username:</label><br>
+                    <input type="text" id="uname" name="uname"><br>
+                    <label for="pword">Password:</label><br>
+                    <input type="password" id="pword" name="pword"><br>
+                    <input type="submit" value="Submit">
+                </form>
+                <br><br>
+                <a href="{{ url_for('signup') }}"">Sign Up</button>
+            </div>
+        </div>
+    </body>
+</html>

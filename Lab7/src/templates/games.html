@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<!-- Displays page showing info about my games -->
+<html>
+    <head>
+        <title>Games</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}"> 
+    </head>
+    <body>
+        <!-- Link back home -->
+        <a href="loggedin">Home</a>
+        <h1>Games</h1>
+        <!-- List of games with links to their pages -->
+        <ol>
+            <img src="{{ url_for('static', filename='Astro.png') }}" />
+            <li><a href="https://store.steampowered.com/app/1900850/Astro_Traveler/">Astro Traveler</a></li>
+            <p>
+                A plague has overcome Earth and you were selected to take to the stars in a tiny spaceship in a plan to save humanity. You hit the first jump station away from Earth with the hopes to sustain the human race by becoming a multiplanet species. You have arrived at your new home where you will engage in an exciting life where you trade, hunt for criminals, mine, steal, and assassinate to make ends meet. Out here criminals run rampant, aliens foil your best mining haul ever, and asteroids smash your hull with one wrong move, but it is the life you must lead to give humanity a chance!
+            </p>
+            <img src="{{ url_for('static', filename='MTM.png') }}" width="460" />
+            <li><a href="http://www.quatrodesigns.com/monster-truck-mayhem/">Monster Truck Mayhem</a></li>
+            <p>A plague has overcome Earth and you were selected to take to the stars in a tiny spaceship in a plan to save humanity.  You hit the first jump station away from Earth with the hopes to sustain the human race by becoming a multiplanet species.  You have arrived at your new home where you will engage in an exciting life where you trade, hunt for criminals, mine, steal, and assassinate to make ends meet.  Out here criminals run rampant, aliens foil your best mining haul ever, and asteroids smash your hull with one wrong move, but it is the life you must lead to give humanity a chance! </p>
+            <li><a href="http://www.quatrodesigns.com/annihilation/">Annihilation</a></li>
+            <p>
+                Career Mode
+                Work you way through a career as you fight for championships. Use your income to repair damage, enter high stakes events, upgrade trucks, or buy new chassis. Gain sponsor interest as you win races and increase your prestige and level. Better sponsors means more money but tougher goals, complete all goals and get the big sponsor payout.
+                
+                Racing
+                Compete in tournaments racing 1v1 against your opponents. Win the tournaments to unlock new events or progress your career.
+                
+                Freestyling
+                Compete against the clock to WOW the judges in this open event. Perform many tricks such as wheelies, stoppies, pogos, backflips and more!!! Attain the highest score to win.
+            </p>
+            <img src="{{ url_for('static', filename='MM.png') }}" height="215"/>
+            <li><a href="http://www.quatrodesigns.com/medieval-mayhem/">Medieval Mayhem</a></li>
+            <p>
+                Multiple Environments
+From the snow covered mountainous regions to the depths of hades your battles can cover the globe through these environments.
+
+Puzzling Levels
+Some levels are filled with puzzles you will need to solve to complete. These puzzles become more challenging as you work through the levels.
+
+Customizable Warriors
+Warriors come with armor and weapons. Each weapon or armor item can boost a particular stat. For example upgrading your weapon will increase your accuracy. You can also name your warriors here.
+
+Warrior Abilities
+Keep your warriors alive as each time they complete a level they will gain XP. Once your warriors hit a certain level they will gain the ability to use ranged attacks with magic. Continue upgrading them to increase their ranged magic attack accuracy.
+
+Turn-based Battle System
+Each turn you will get the chance to move one of your warriors, use powerups, or wait out the enemy. You can win battles by destroying all the enemies or taking all the bases on the current level.
+
+Achievement System
+Work your way through the achievements to earn gold. Some achievements are quite tough but all well worth the work to complete.
+            </p>
+        </ol>
+    </body>
+</html>

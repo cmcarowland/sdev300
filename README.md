@@ -139,4 +139,19 @@ overall population.
 - [x] Upload project and .doc
 
 ## Lab 7
+- [x] Expand website from last lab
+  - [x] Add 4 different static images 
+  - [x] Have a table with 4 rows and 3 cols
+  - [x] Add user login page
+    - [x] Username and password
+  - [x] Add user registration page
+  - [x] Password complexity
+    - [x] 12 chars long
+    - [x] 1 Upper case
+    - [x] 1 lowercase
+    - [x] 1 number
+    - [x] 1 special char
+- [ ] Write tests 
+- [ ] Upload project and doc
+
 ## Lab 8
