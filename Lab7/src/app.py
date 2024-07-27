@@ -78,11 +78,11 @@ def create_app() -> Flask:
                     return resp
 
             return render_template('login.html')
-        else:
-            if is_authed(request):
-                return redirect('/loggedin')
 
-            return render_template('login.html', invalid="hidden=true")
+        if is_authed(request):
+            return redirect('/loggedin')
+
+        return render_template('login.html', invalid="hidden=true")
 
     @a.route('/signup', methods=['GET', 'POST'])
     def signup():
@@ -92,18 +92,18 @@ def create_app() -> Flask:
 
             if users.user_exist(request.form['uname']):
                 return render_template('signup.html', user="", pw="hidden=true")
-            else:
-                p = backend.Password(request.form['pword'])
-                if p.valid_password():
-                    users.add_user(request.form['uname'], request.form['pword'])
-                    return redirect('/login')
-                else:
-                    return render_template('signup.html', user="hidden=true", pw="")
-        else:
-            if is_authed(request):
-                return redirect('/loggedin')
-            print("signup")
-            return render_template('signup.html', user="hidden=true", pw="hidden=true")
+
+            p = backend.Password(request.form['pword'])
+            if p.valid_password():
+                users.add_user(request.form['uname'], request.form['pword'])
+                return redirect('/login')
+
+            return render_template('signup.html', user="hidden=true", pw="")
+
+        if is_authed(request):
+            return redirect('/loggedin')
+
+        return render_template('signup.html', user="hidden=true", pw="hidden=true")
 
     @a.route('/loggedin')
     def loggedin():
