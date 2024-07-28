@@ -151,7 +151,7 @@ overall population.
     - [x] 1 lowercase
     - [x] 1 number
     - [x] 1 special char
-- [ ] Write tests 
-- [ ] Upload project and doc
+- [x] Write tests 
+- [x] Upload project and doc
 
 ## Lab 8
