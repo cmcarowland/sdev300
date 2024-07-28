@@ -23,9 +23,10 @@ are present in the templates directory for proper functionality.
 """
 
 import random
-from datetime import datetime
+from datetime import datetime, timezone
 from flask import Flask, render_template, request, redirect, make_response
 import backend
+from logger import LogItem, Log
 
 
 def create_app() -> Flask:
@@ -45,6 +46,7 @@ def create_app() -> Flask:
 
     a = Flask(__name__)
     users = backend.Users()
+    log = Log()
 
     @a.route('/')
     def index():
@@ -68,15 +70,21 @@ def create_app() -> Flask:
     def login():
         if request.method == 'POST':
             if is_authed(request):
+                log.add_log(LogItem('Low', 'Already Auth', datetime.now(timezone.utc), request.remote_addr))
                 return redirect('/loggedin')
             if users.user_exist(request.form['uname']):
                 if users.login(request.form['uname'], request.form['pword']):
                     c = cookie()
                     resp = make_response(redirect('/loggedin'))
                     resp.set_cookie('auth', c)
-                    users.authenticated[c] = datetime.now()
+                    users.authenticated[c] = datetime.now(timezone.utc)
+                    log.add_log(LogItem('+', 'Success', datetime.now(timezone.utc), request.remote_addr))
                     return resp
-
+                else:
+                    log.add_log(LogItem('Mid', 'Invalid Password', datetime.now(timezone.utc), request.remote_addr))
+            else:
+                log.add_log(LogItem('Mid', 'Invalid Username', datetime.now(timezone.utc), request.remote_addr))
+                
             return render_template('login.html')
 
         if is_authed(request):
@@ -116,6 +124,7 @@ def create_app() -> Flask:
             str: Rendered HTML of 'index.html' with the current date and time.
         """
         if not is_authed(request):
+            log.add_log(LogItem('High', 'Unauthorized Access Request', datetime.now(timezone.utc), request.remote_addr))
             return redirect('/login')
 
         dt = datetime.now()
@@ -134,6 +143,7 @@ def create_app() -> Flask:
             str: Rendered HTML of 'sim_racing.html'.
         """
         if not is_authed(request):
+            log.add_log(LogItem('High', 'Unauthorized Access Request', datetime.now(timezone.utc), request.remote_addr))
             return redirect('/login')
 
         return render_template("sim_racing.html")
@@ -149,6 +159,7 @@ def create_app() -> Flask:
             str: Rendered HTML of 'games.html'.
         """
         if not is_authed(request):
+            log.add_log(LogItem('High', 'Unauthorized Access Request', datetime.now(timezone.utc), request.remote_addr))
             return redirect('/login')
 
         return render_template("games.html")
