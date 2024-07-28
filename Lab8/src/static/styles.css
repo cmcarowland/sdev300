@@ -1,0 +1,51 @@
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+}
+th {
+    background-color: #f4f4f4;
+    color: black;
+}
+td {
+    color: white;
+}
+body {
+    color: white;
+    background-color: hsl(0, 0%, 18%);
+}
+a {
+    color: rgb(184, 184, 184);
+}
+.card-holder {
+    width: 100vw;
+    min-height: 100vh;
+}
+.card-item {
+    width: 400px;
+    height: 400px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    text-align: center;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+.grid-container {
+    width: 100vw;
+    display: grid;
+    grid-auto-columns: repeat(2, 1fr);
+}
+.grid-container {
+    display: inline-grid;
+}
+.image1{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}

@@ -155,3 +155,15 @@ overall population.
 - [x] Upload project and doc
 
 ## Lab 8
+- [ ] Update site to:
+  - [ ] Include a password update form
+  - [ ] NIST SP 800-63B
+    - [ ] Check Length and Complexity
+    - [ ] Compare against known comprimised passwords in provided list
+      - [ ] Deny users that use bad passwords
+- [ ] Create a logger that
+  - [ ] Logs failed login attempts
+  - [ ] Log entries include: 
+    - [ ] Date
+    - [ ] Time
+    - [ ] IP Address
