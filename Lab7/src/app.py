@@ -44,6 +44,7 @@ def create_app() -> Flask:
     """
 
     a = Flask(__name__)
+    users = backend.Users()
 
     @a.route('/')
     def index():
@@ -67,12 +68,11 @@ def create_app() -> Flask:
     def login():
         if request.method == 'POST':
             if is_authed(request):
-                return render_template('loggedin.html')
-
+                return redirect('/loggedin')
             if users.user_exist(request.form['uname']):
                 if users.login(request.form['uname'], request.form['pword']):
                     c = cookie()
-                    resp = make_response(render_template('loggedin.html'))
+                    resp = make_response(redirect('/loggedin'))
                     resp.set_cookie('auth', c)
                     users.authenticated[c] = datetime.now()
                     return resp
@@ -88,7 +88,7 @@ def create_app() -> Flask:
     def signup():
         if request.method == 'POST':
             if is_authed(request):
-                return render_template('loggedin.html')
+                return redirect('/loggedin')
 
             if users.user_exist(request.form['uname']):
                 return render_template('signup.html', user="", pw="hidden=true")
@@ -178,5 +178,4 @@ def create_app() -> Flask:
 
     return a
 
-users = backend.Users()
 app = create_app()
