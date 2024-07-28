@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<!-- Main page displaying information about me-->
+<html>
+    <head>
+        <title>Home</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}"> 
+    </head>
+    <body>
+        <h1>George Rowland</h1>
+        <!-- List of hobbies with links to their pages-->
+        <h2>Hobbies</h2>
+        <ol>
+            <li><a href="sim_racing">Sim Racing</a></li>
+            <li><a href="games">Creating Games</a></li>
+        </ol>
+        <!-- Date page was rendered -->
+        <h5> {{ date_time }}</h5>
+        <a href="logout">Log Out</a>
+    </body>
+</html>
