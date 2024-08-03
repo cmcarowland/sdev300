@@ -101,6 +101,7 @@ class Password:
         get_pw_hash():
             Returns the hashed version of the password using SHA-256.
     """
+    common_passwords = []
 
     def __init__(self, pw: str):
         """
@@ -109,6 +110,9 @@ class Password:
         Args:
             pw (str): The plaintext password.
         """
+        if len(Password.common_passwords) == 0:
+            with open('static/CommonPassword.txt', 'r', encoding='utf-8') as ifile:
+                Password.common_passwords = ifile.read().splitlines()
 
         self.password : str = pw
 
@@ -166,6 +170,23 @@ class Password:
         for c in self.password:
             if c in special:
                 return True
+
+        return False
+
+    def is_common_password(self) -> bool:
+        """
+        Checks if the current password is a common password.
+
+        This method compares the instance's password against a predefined list of common
+        passwords. It returns `True` if the password is found in the list, indicating that
+        the password is too common and should be avoided. Otherwise, it returns `False`.
+
+        Returns:
+            bool: `True` if the password is a common password, `False` otherwise.
+        """
+
+        if self.password in Password.common_passwords:
+            return True
 
         return False
 
@@ -277,6 +298,49 @@ class Users:
         self.users[user_name] = password.get_pw_hash()
         self.save()
         return True
+
+    def update_password(self, user_name : str, old_pw : str, new_pw : str) -> int:
+        """
+        Updates the password for a given user.
+
+        This method performs the following steps to update the user's password:
+        1. Checks if the user exists. If not, returns `1`.
+        2. Verifies if the provided old password matches the stored password for the user.
+        If it does not match, returns `2`.
+        3. Checks if the new password is a common password. If it is, returns `3`.
+        4. Validates the new password based on certain criteria. If it is invalid, returns `4`.
+        5. If all checks pass, updates the user's password, saves the changes, and returns `0`.
+
+        Args:
+            user_name (str): The username of the user whose password is to be updated.
+            old_pw (str): The current password of the user.
+            new_pw (str): The new password to be set.
+
+        Returns:
+            int: Status code indicating the result of the password update operation:
+                - `0` for success.
+                - `1` if the user does not exist.
+                - `2` if the old password is incorrect.
+                - `3` if the new password is too common.
+                - `4` if the new password is invalid.
+        """
+
+        if not self.user_exist(user_name):
+            return 1
+
+        if not sha256_crypt.verify(old_pw, self.users[user_name]):
+            return 2
+
+        pw = Password(new_pw)
+        if pw.is_common_password():
+            return 3
+
+        if not pw.valid_password():
+            return 4
+
+        self.users[user_name] = pw.get_pw_hash()
+        self.save()
+        return 0
 
     def login(self, user_name : str, pw : str) -> bool:
         """

@@ -1,9 +1,17 @@
 """adsklfj"""
 import os
 from datetime import datetime
+from enum import Enum
+
+class LogTypes(Enum):
+    INFO = 0
+    WARN = 1
+    LOW = 2
+    MED = 3
+    HIGH = 4
 
 class LogItem:
-    def __init__(self, level : str, des : str, dt : datetime, ip : str):
+    def __init__(self, level : LogTypes, des : str, dt : datetime, ip : str):
         self.level = level
         self.description = des
         self.date = dt.date()
@@ -11,7 +19,7 @@ class LogItem:
         self.ip = ip
 
     def __str__(self) -> str:
-        return f'[{self.level}] {self.description} : {self.date}, {self.time}, {self.ip}'
+        return f'[{self.level.name}] {self.description} : {self.date}, {self.time}, {self.ip}'
 
 class Log:
     def __init__(self):

@@ -2,12 +2,11 @@
 Test module for lab 6
 """
 import pytest
-from app import create_app
+from create_app import app
 import backend
 
 @pytest.fixture()
 def client():
-    app = create_app()
     app.config["TESTING"] = True
     users = backend.Users()
 
@@ -52,8 +51,8 @@ def test_login_fail(client):
 
 def get_logged_in_client(client):
     response = client.get("/login")
-    response = client.post('/login', data={'uname': 'test',
-                                           'pword': 'Hello'}, follow_redirects=True)
+    response = client.post('/login', data={'uname': 'bob',
+                                           'pword': 'Password!123'}, follow_redirects=True)
     return client
 
 def test_loggedin(client):
@@ -76,13 +75,63 @@ def test_racing(client):
     assert b'My Cars' in response.data
     assert b'Sim Racing' in response.data
 
+def test_pw_change(client):
+    client = get_logged_in_client(client)
+    response = client.get('/update')
+    assert 200 == response.status_code
+    response = client.post('/update', data={'old_pw': 'Password!123',
+                                           'pword': 'Password!123', 
+                                           'pword2': 'Password!123'}, follow_redirects=True)
+    assert 200 == response.status_code
+    assert b' <div class="card-holder">\n            <div class="card-item" hidden=true>\n                <p>Sign Up</p>\n' in response.data
+
+def test_pw_invalid_old(client):
+    client = get_logged_in_client(client)
+    response = client.get('/update')
+    assert 200 == response.status_code
+    response = client.post('/update', data={'old_pw': 'Password!1',
+                                           'pword': 'Password!123', 
+                                           'pword2': 'Password!123'}, follow_redirects=True)
+    assert 200 == response.status_code
+    assert b'<p style="color: red;" >Password does not match current password</p>\n' in response.data
+
+def test_pw_no_match(client):
+    client = get_logged_in_client(client)
+    response = client.get('/update')
+    assert 200 == response.status_code
+    response = client.post('/update', data={'old_pw': 'Password!123',
+                                           'pword': 'Password!123', 
+                                           'pword2': 'Password!456'}, follow_redirects=True)
+    assert 200 == response.status_code
+    assert b'<p style="color: red;" >New Passwords Do Not Match</p>' in response.data
+
+def test_pw_new_pw_invalid(client):
+    client = get_logged_in_client(client)
+    response = client.get('/update')
+    assert 200 == response.status_code
+    response = client.post('/update', data={'old_pw': 'Password!123',
+                                           'pword': 'asdfasdfasdf', 
+                                           'pword2': 'asdfasdfasdf'}, follow_redirects=True)
+    assert 200 == response.status_code
+    assert b' <p style="color: red;" >Invalid Password</p>\n' in response.data
+
+def test_pw_new_pw_in_list(client):
+    client = get_logged_in_client(client)
+    response = client.get('/update')
+    assert 200 == response.status_code
+    response = client.post('/update', data={'old_pw': 'Password!123',
+                                           'pword': 'password', 
+                                           'pword2': 'password'}, follow_redirects=True)
+    assert 200 == response.status_code
+    assert b' <p style="color: red;" >Password is in the common password list</p>' in response.data
+
 def test_login():
     u = backend.Users()
-    assert u.login("bob", "!@#123QWEqwe") == True
+    assert u.login("bob", "Password!123") == True
 
 def test_login_invalid():
     u = backend.Users()
-    assert u.login("bob", "!@#123QWE") == False
+    assert u.login("test", "Hello000") == False
 
 def test_user_exists():
     u = backend.Users()
@@ -131,4 +180,3 @@ def test_password_good():
     assert p.has_digit() is True
     assert p.has_special() is True
     assert p.valid_password() is True
-
